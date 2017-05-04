@@ -1,0 +1,56 @@
+---
+title: "My hometown"
+author: "Agustin González-Quel"
+date: "04 de mayo de 2017"
+output: html_document
+---
+
+# This is my Hometown
+
+Dated May the 5th, 2017
+
+## Linares
+I was born in Linares (Andalucia - Spain). It is a place of about 60.000 inhabitants located in the north-east of Andalucia. A funny hot town in summer; not very cold in winter. I spent there my first 17 years of life. 
+
+
+```{r setup, echo = FALSE}
+library(leaflet)
+
+LinaresIcon <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/3/38/Escudo_de_Linares.svg",
+                        iconWidth = 51*215/230, iconHeight = 51,
+                        iconAnchorX = 31*215/230/2, iconAnchorY = 16)
+
+Linares_map <- leaflet()
+Linares_map <- addTiles(Linares_map)
+Linares_map <- addMarkers(Linares_map, 
+                          lat = 38.09456210527424, 
+                          lng = -3.6322420835494995, 
+                          icon = LinaresIcon,
+                          popup = "Linares")
+Linares_map
+```
+
+And now, Linares located in Andalucia, the size of the circles represents the size of the city.
+
+```{r echo = FALSE}
+cities <- data.frame(name = c("Sevilla", "Granada", "Córdoba", "Jaen", "Málaga", "Cádiz",
+                               "Linares"),
+                     pop = c(690000, 235000, 327000, 115000, 569000, 119000, 59000),
+                     lat = c(37.38161597475995, 37.17618429254936, 37.88731847929118,
+                             37.76847577247014, 36.714118564660595, 36.52950186333476,
+                             38.09456210527424),
+                     lng = c(-5.9882354736328125, -3.5932159423828125, -4.7728729248046875,
+                             -3.7878799438476562, -4.426116943359375, -6.29791259765625,
+                             -3.6322420835494995))
+
+cities %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addCircles(weight = 1, radius = sqrt(cities$pop) *30)
+```
+
+ 
+
+
+###Credits
+The Linares Simbol is licensed under the Creative Commons Attribution-Share Alike 4.0 International (https://creativecommons.org/licenses/by-sa/4.0/) By user:SanchoPanzaXXI (Own work) [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC BY-SA 4.0-3.0-2.5-2.0-1.0 (http://creativecommons.org/licenses/by-sa/4.0-3.0-2.5-2.0-1.0)], via Wikimedia Commons.
