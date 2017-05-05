@@ -1,19 +1,17 @@
 ---
 title: "My hometown"
 author: "Agustin González-Quel"
-date: "04 de mayo de 2017"
-output: html_document
+date: "May the 5th, 2017"
+output:
+  pdf_document: default
+  html_document: default
 ---
-
-# This is my Hometown
-
-Dated May the 5th, 2017
 
 ## Linares
 I was born in Linares (Andalucia - Spain). It is a place of about 60.000 inhabitants located in the north-east of Andalucia. A funny hot town in summer; not very cold in winter. I spent there my first 17 years of life. 
 
 
-```{r setup, echo = FALSE}
+```{r setup, echo = FALSE, warning = FALSE}
 library(leaflet)
 
 LinaresIcon <- makeIcon(iconUrl = "https://upload.wikimedia.org/wikipedia/commons/3/38/Escudo_de_Linares.svg",
@@ -30,9 +28,11 @@ Linares_map <- addMarkers(Linares_map,
 Linares_map
 ```
 
-And now, Linares located in Andalucia, the size of the circles represents the size of the city.
 
-```{r echo = FALSE}
+We can locate Linares in Andalucia map (the size of the circles represents the population of each city).
+
+
+```{r echo = FALSE, warning = FALSE, message=FALSE}
 cities <- data.frame(name = c("Sevilla", "Granada", "Córdoba", "Jaen", "Málaga", "Cádiz",
                                "Linares"),
                      pop = c(690000, 235000, 327000, 115000, 569000, 119000, 59000),
